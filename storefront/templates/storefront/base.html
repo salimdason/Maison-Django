@@ -18,6 +18,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/product.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 
 </head>
 
@@ -45,40 +46,28 @@
           </div>
           <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
-              <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li class="has-children active">
-                  <a href="index.html">Home</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                    <li class="has-children">
-                      <a href="#">Sub Menu</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Menu One</a></li>
-                        <li><a href="#">Menu Two</a></li>
-                        <li><a href="#">Menu Three</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="#">Catalogue</a></li>
-                <li><a href="#">New Arrivals</a></li>
-                <li><a href="contact.html">Contact</a></li>
+              <ul class="site-menu js-clone-nav d-none d-lg-block">  
+                <li><a href="{% url 'store-home' %}">Home</a></li>            
+                <li><a href="{% url 'store-home' %}">Shop</a></li>
+                <li><a href="{% url 'products' %}">Product Catalogue</a></li>
+                <li><a href="{% url 'about' %}">About US</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
               </ul>
             </nav>
           </div>
           <div class="icons">
             <!-- <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a> -->
+            <a href="#" class="icons-btn d-inline-block bag" style="text-decoration: none;">Login 
+              <i class="fas fa-user-alt"></i>
+            </a>
             <a href="#" class="icons-btn d-inline-block bag js-search-open" style="text-decoration: none;">
               <span class="icon-search"></span>
             </a> 
-            <a href="cart.html" class="icons-btn d-inline-block bag" style="text-decoration: none;">
+            <a href="{% url 'cart' %}" class="icons-btn d-inline-block bag" style="text-decoration: none;">
               <span class="icon-shopping-bag"></span>
               <span class="number">2</span>
             </a>
+             
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
           </div>
         </div>
