@@ -1,10 +1,18 @@
 from django.shortcuts import render
 from .models import *
+from django.http import JsonResponse
 
 
 def storehome(request):
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    else:
+        order = {"get_cart_total":0, "get_cart_items":0}
+
     products = Product.objects.all()
-    context= {'products':products}
+    context= {'products':products, "order": order}
     return render(request, 'storefront/home.html', context)
 
 def cart(request):
@@ -45,3 +53,6 @@ def about(request):
 def contact(request):
     context= {}
     return render(request, 'storefront/contact.html', context)
+
+def updateItem(request):
+    return JsonResponse('Item was added', safe=False)
